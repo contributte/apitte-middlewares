@@ -13,7 +13,8 @@
   ],
   "require": {
     "php": ">= 5.6",
-    "apitte/core": "@dev"
+    "apitte/core": "@dev",
+    "contributte/middlewares": "~0.2.1"
   },
   "require-dev": {
     "ninjify/qa": "^0.4.0",
