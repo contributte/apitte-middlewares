@@ -2,27 +2,42 @@
 
 namespace Apitte\Middlewares\DI;
 
-use Apitte\Core\DI\AbstractPlugin;
-use Apitte\Core\DI\ApiExtension;
+use Apitte\Core\DI\Plugin\AbstractPlugin;
+use Apitte\Core\DI\Plugin\PluginCompiler;
 use Apitte\Middlewares\ApiMiddleware;
 use Contributte\Middlewares\AutoBasePathMiddleware;
 use Contributte\Middlewares\DI\MiddlewaresExtension;
 use Contributte\Middlewares\TracyMiddleware;
-use Nette\DI\Statement;
-use RuntimeException;
 
 class MiddlewaresPlugin extends AbstractPlugin
 {
 
 	const PLUGIN_NAME = 'middlewares';
 
+	/** @var array */
+	protected $defaults = [
+		'tracy' => TRUE,
+		'autobasepath' => TRUE,
+	];
+
 	/**
-	 * @param ApiExtension $extension
+	 * @param PluginCompiler $compiler
 	 */
-	public function __construct(ApiExtension $extension)
+	public function __construct(PluginCompiler $compiler)
 	{
-		parent::__construct($extension);
+		parent::__construct($compiler);
 		$this->name = self::PLUGIN_NAME;
+	}
+
+	/**
+	 * Process and validate config
+	 *
+	 * @param array $config
+	 * @return void
+	 */
+	public function setupPlugin(array $config = [])
+	{
+		$this->setupConfig($this->defaults, $config);
 	}
 
 	/**
@@ -32,35 +47,25 @@ class MiddlewaresPlugin extends AbstractPlugin
 	 */
 	public function loadPluginConfiguration()
 	{
-		// Is MiddlewaresExtension (contributte/middlewares) registered?
-		if (!$this->getMiddlewaresExtension()) {
-			throw new RuntimeException(sprintf('Extension %s is not registered', MiddlewaresExtension::class));
+		$builder = $this->getContainerBuilder();
+		$global = $this->compiler->getExtension()->getConfig();
+		$config = $this->getConfig();
+
+		if ($config['tracy'] === TRUE) {
+			$builder->addDefinition($this->prefix('tracy'))
+				->setFactory(TracyMiddleware::class . '::factory', [$global['debug']])
+				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 100]);
 		}
 
-		// HACK! Update middlewares extension
-		$extension = $this->getMiddlewaresExtension();
+		if ($config['autobasepath'] === TRUE) {
+			$builder->addDefinition($this->prefix('autobasepath'))
+				->setFactory(AutoBasePathMiddleware::class)
+				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 200]);
+		}
 
-		$extension->setConfig([
-			'middlewares' => [
-				new Statement(TracyMiddleware::class . '::factory', [TRUE]),
-				new Statement(AutoBasePathMiddleware::class),
-				new Statement(ApiMiddleware::class),
-			],
-		]);
-	}
-
-	/**
-	 * HELPERS *****************************************************************
-	 */
-
-	/**
-	 * @return MiddlewaresExtension
-	 */
-	protected function getMiddlewaresExtension()
-	{
-		$ext = $this->extension->getCompiler()->getExtensions(MiddlewaresExtension::class);
-
-		return $ext ? reset($ext) : NULL;
+		$builder->addDefinition($this->prefix('api'))
+			->setFactory(ApiMiddleware::class)
+			->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 500]);
 	}
 
 }
