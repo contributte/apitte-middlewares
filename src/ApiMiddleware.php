@@ -4,8 +4,6 @@ namespace Apitte\Middlewares;
 
 use Apitte\Core\Dispatcher\IDispatcher;
 use Apitte\Core\Exception\Logical\InvalidStateException;
-use Apitte\Core\Http\ApiRequest;
-use Apitte\Core\Http\ApiResponse;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,7 +30,7 @@ class ApiMiddleware
 	 * @param ServerRequestInterface $request
 	 * @param ResponseInterface $response
 	 * @param callable $next
-	 * @return ApiResponse
+	 * @return ResponseInterface
 	 */
 	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
 	{
@@ -54,18 +52,18 @@ class ApiMiddleware
 	 */
 
 	/**
-	 * @param ApiRequest $request
-	 * @param ApiResponse $response
-	 * @return ApiResponse
+	 * @param ServerRequestInterface $request
+	 * @param ResponseInterface $response
+	 * @return ResponseInterface
 	 */
-	protected function dispatch(ApiRequest $request, ApiResponse $response)
+	protected function dispatch(ServerRequestInterface $request, ResponseInterface $response)
 	{
 		try {
 			// Pass to dispatcher, find handler, process some logic and return response.
 			$response = $this->dispatcher->dispatch($request, $response);
 
 			// Validate returned api response
-			if (!($response instanceof ApiResponse)) {
+			if (!($response instanceof ResponseInterface)) {
 				throw new InvalidStateException(sprintf('Returned response must be type of %s', ApiResponse::class));
 			}
 
@@ -83,25 +81,21 @@ class ApiMiddleware
 	/**
 	 * @param ServerRequestInterface $psr7Request
 	 * @param ResponseInterface $psr7Response
-	 * @return ApiRequest
+	 * @return ServerRequestInterface
 	 */
 	protected function createApiRequest(ServerRequestInterface $psr7Request, ResponseInterface $psr7Response)
 	{
-		if ($psr7Request instanceof ApiRequest) return $psr7Request;
-
-		return ApiRequest::of($psr7Request);
+		return $psr7Request;
 	}
 
 	/**
 	 * @param ServerRequestInterface $psr7Request
 	 * @param ResponseInterface $psr7Response
-	 * @return ApiResponse
+	 * @return ResponseInterface
 	 */
 	protected function createApiResponse(ServerRequestInterface $psr7Request, ResponseInterface $psr7Response)
 	{
-		if ($psr7Response instanceof ApiResponse) return $psr7Response;
-
-		return ApiResponse::of($psr7Response);
+		return $psr7Response;
 	}
 
 }
