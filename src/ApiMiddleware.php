@@ -64,7 +64,7 @@ class ApiMiddleware
 
 			// Validate returned api response
 			if (!($response instanceof ResponseInterface)) {
-				throw new InvalidStateException(sprintf('Returned response must be type of %s', ApiResponse::class));
+				throw new InvalidStateException(sprintf('Returned response must be type of %s', ResponseInterface::class));
 			}
 
 			return $response;
