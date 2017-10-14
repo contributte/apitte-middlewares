@@ -1,7 +1,7 @@
 {
   "name": "apitte/middlewares",
-  "description": "Apitte core library",
-  "keywords": ["api", "rest", "json", "psr7", "middlewares"],
+  "description": "Middlewares support for Apitte stack",
+  "keywords": ["api", "apitte", "middlewares", "relay"],
   "type": "library",
   "license": "MIT",
   "homepage": "https://github.com/apitte/middlewares",
