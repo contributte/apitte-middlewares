@@ -34,12 +34,8 @@ class ApiMiddleware
 	 */
 	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
 	{
-		// Create API request & response
-		$apiRequest = $this->createApiRequest($request, $response);
-		$apiResponse = $this->createApiResponse($request, $response);
-
 		// Pass this API request/response objects to API dispatcher
-		$response = $this->dispatch($apiRequest, $apiResponse);
+		$response = $this->dispatch($request, $response);
 
 		// Pass response to next middleware
 		$response = $next($request, $response);
@@ -72,30 +68,6 @@ class ApiMiddleware
 			// Just throw this out
 			throw $e;
 		}
-	}
-
-	/**
-	 * HELPERS *****************************************************************
-	 */
-
-	/**
-	 * @param ServerRequestInterface $psr7Request
-	 * @param ResponseInterface $psr7Response
-	 * @return ServerRequestInterface
-	 */
-	protected function createApiRequest(ServerRequestInterface $psr7Request, ResponseInterface $psr7Response)
-	{
-		return $psr7Request;
-	}
-
-	/**
-	 * @param ServerRequestInterface $psr7Request
-	 * @param ResponseInterface $psr7Response
-	 * @return ResponseInterface
-	 */
-	protected function createApiResponse(ServerRequestInterface $psr7Request, ResponseInterface $psr7Response)
-	{
-		return $psr7Response;
 	}
 
 }
