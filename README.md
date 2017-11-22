@@ -28,6 +28,12 @@ composer require apitte/middlewares
 |-------------|--------------|----------|----------|
 | development | `dev-master` | `master` | `>= 5.6` |
 
+## Overview
+
+- [Installation - how to register a plugin](https://github.com/apitte/middlewares/tree/master/.docs#plugin)
+- [Middlewares - cycle](https://github.com/apitte/middlewares/tree/master/.docs#middlewares)
+- [Playground - real examples](https://github.com/apitte/middlewares/tree/master/.docs#playground)
+
 ## Maintainers
 
 <table>
