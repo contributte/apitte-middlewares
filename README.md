@@ -31,6 +31,7 @@ composer require apitte/middlewares
 ## Overview
 
 - [Installation - how to register a plugin](https://github.com/apitte/middlewares/tree/master/.docs#plugin)
+- [Configuration - how to configure](https://github.com/apitte/middlewares/tree/master/.docs#configuration)
 - [Middlewares - cycle](https://github.com/apitte/middlewares/tree/master/.docs#middlewares)
 - [Playground - real examples](https://github.com/apitte/middlewares/tree/master/.docs#playground)
 
