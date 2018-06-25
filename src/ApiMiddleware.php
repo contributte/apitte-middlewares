@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apitte\Middlewares;
 
 use Apitte\Core\Dispatcher\IDispatcher;
 use Apitte\Core\Exception\Logical\InvalidStateException;
-use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Throwable;
 
 class ApiMiddleware
 {
@@ -14,25 +14,12 @@ class ApiMiddleware
 	/** @var IDispatcher */
 	protected $dispatcher;
 
-	/**
-	 * @param IDispatcher $dispatcher
-	 */
 	public function __construct(IDispatcher $dispatcher)
 	{
 		$this->dispatcher = $dispatcher;
 	}
 
-	/**
-	 * MIDDLEWARE **************************************************************
-	 */
-
-	/**
-	 * @param ServerRequestInterface $request
-	 * @param ResponseInterface $response
-	 * @param callable $next
-	 * @return ResponseInterface
-	 */
-	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
 	{
 		// Pass this API request/response objects to API dispatcher
 		$response = $this->dispatch($request, $response);
@@ -43,16 +30,7 @@ class ApiMiddleware
 		return $response;
 	}
 
-	/**
-	 * HELPERS *****************************************************************
-	 */
-
-	/**
-	 * @param ServerRequestInterface $request
-	 * @param ResponseInterface $response
-	 * @return ResponseInterface
-	 */
-	protected function dispatch(ServerRequestInterface $request, ResponseInterface $response)
+	protected function dispatch(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
 	{
 		try {
 			// Pass to dispatcher, find handler, process some logic and return response.
@@ -64,7 +42,7 @@ class ApiMiddleware
 			}
 
 			return $response;
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			// Just throw this out
 			throw $e;
 		}
