@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Apitte\Middlewares\DI;
 
@@ -12,17 +12,14 @@ use Contributte\Middlewares\TracyMiddleware;
 class MiddlewaresPlugin extends AbstractPlugin
 {
 
-	const PLUGIN_NAME = 'middlewares';
+	public const PLUGIN_NAME = 'middlewares';
 
-	/** @var array */
+	/** @var mixed[] */
 	protected $defaults = [
-		'tracy' => TRUE,
-		'autobasepath' => TRUE,
+		'tracy' => true,
+		'autobasepath' => true,
 	];
 
-	/**
-	 * @param PluginCompiler $compiler
-	 */
 	public function __construct(PluginCompiler $compiler)
 	{
 		parent::__construct($compiler);
@@ -31,22 +28,20 @@ class MiddlewaresPlugin extends AbstractPlugin
 
 	/**
 	 * Register services (middlewares wrappers)
-	 *
-	 * @return void
 	 */
-	public function loadPluginConfiguration()
+	public function loadPluginConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$global = $this->compiler->getExtension()->getConfig();
 		$config = $this->getConfig();
 
-		if ($config['tracy'] === TRUE) {
+		if ($config['tracy'] === true) {
 			$builder->addDefinition($this->prefix('tracy'))
 				->setFactory(TracyMiddleware::class . '::factory', [$global['debug']])
 				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 100]);
 		}
 
-		if ($config['autobasepath'] === TRUE) {
+		if ($config['autobasepath'] === true) {
 			$builder->addDefinition($this->prefix('autobasepath'))
 				->setFactory(AutoBasePathMiddleware::class)
 				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 200]);

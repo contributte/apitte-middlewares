@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: ApiMiddleware
@@ -14,7 +14,7 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-Toolkit::test(function () {
+Toolkit::test(function (): void {
 	$request = Psr7ServerRequestFactory::fromSuperGlobal();
 	$response = Psr7ResponseFactory::fromGlobal();
 
