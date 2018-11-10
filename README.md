@@ -7,10 +7,10 @@
 [![Build Status](https://img.shields.io/travis/apitte/middlewares.svg?style=flat-square)](https://travis-ci.org/apitte/middlewares)
 [![Code coverage](https://img.shields.io/coveralls/apitte/middlewares.svg?style=flat-square)](https://coveralls.io/r/apitte/middlewares)
 [![Licence](https://img.shields.io/packagist/l/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
-
 [![Downloads this Month](https://img.shields.io/packagist/dm/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
 [![Downloads total](https://img.shields.io/packagist/dt/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
 [![Latest stable](https://img.shields.io/packagist/v/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 ## Discussion / Help
 
@@ -51,20 +51,20 @@ composer require apitte/middlewares
       </td>
       <td align="center">
         <a href="https://github.com/mabar">
-            <img width="150" height="150" src="https://avatars0.githubusercontent.com/u/20974277?s=400&v=4">
+            <img width="150" height="150" src="https://avatars0.githubusercontent.com/u/20974277?s=150&v=4">
         </a>
         </br>
         <a href="https://github.com/mabar">Marek Bartoš</a>
       </td>
     </tr>
-  <tbody>
+  </tbody>
 </table>
 
 -----
 
 <a href="https://github.com/tlapnet"><img  width="200" src="https://cdn.rawgit.com/f3l1x/xsource/2463efb7/assets/tlapdev.png"></a>
 
-The development is sponsored by [Tlapnet](http://www.tlapnet.cz) and a lot of coffeees. Thank you guys! :+1:
+The development is sponsored by [Tlapnet](http://www.tlapnet.cz) and a lot of coffees. Thank you guys! :+1:
 
 -----
 
