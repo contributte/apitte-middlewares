@@ -24,7 +24,12 @@
   "require-dev": {
     "ninjify/qa": "^0.8.0",
     "ninjify/nunjuck": "^0.2.0",
-    "mockery/mockery": "^0.9.9"
+    "nette/di": "~2.4.15",
+    "mockery/mockery": "^0.9.9",
+    "phpstan/phpstan-shim": "^0.11",
+    "phpstan/phpstan-deprecation-rules": "^0.11",
+    "phpstan/phpstan-nette": "^0.11",
+    "phpstan/phpstan-strict-rules": "^0.11"
   },
   "autoload": {
     "psr-4": {
@@ -44,15 +49,8 @@
     "coverage": [
       "tester -s -p phpdbg --colors 1 -C --coverage ./coverage.xml --coverage-src ./src tests/cases"
     ],
-    "phpstan-install": [
-      "mkdir -p temp/phpstan",
-      "composer require -d temp/phpstan phpstan/phpstan:^0.10",
-      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:^0.10",
-      "composer require -d temp/phpstan phpstan/phpstan-nette:^0.10",
-      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.10"
-    ],
     "phpstan": [
-      "temp/phpstan/vendor/bin/phpstan analyse -l max -c phpstan.neon src"
+      "vendor/bin/phpstan analyse -l max -c phpstan.neon src"
     ]
   },
   "extra": {
