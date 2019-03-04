@@ -1,36 +1,34 @@
-# Apitte/Middlewares
+# Apitte Middlewares
 
-## Content
+Middlewares for [Apitte](https://github.com/apitte/core).
 
-- [Installation - how to register a plugin](#plugin)
-- [Configuration - how to configure](#configuration)
-- [Middlewares - cycle](#tracy)
-- [Playground - real examples](#playground)
+Transform and validate request or early return response before it is handled by dispatcher.
 
-## Plugin
+## Setup
 
-This plugin requires [Apitte/Core](https://github.com/apitte/core) library.
+First of all, setup [core](https://github.com/apitte/core) and [contributte/middlewares](https://github.com/contributte/middlewares) packages.
 
-At first you have to register the main extension.
+Install and register middlewares plugin
 
-```yaml
-extensions:
-    api: Apitte\Core\DI\ApiExtension
+```bash
+composer require apitte/middlewares
 ```
-
-Secondly, add the `MiddlewaresPlugin` plugin.
 
 ```yaml
 api:
-    plugins:
+    plugins: 
         Apitte\Middlewares\DI\MiddlewaresPlugin:
 ```
 
+In `index.php` replace `Apitte\Core\Application\IApplication` with `Contributte\Middlewares\Application\IApplication`.
+
 ## Configuration
 
-You can configure a few options.
+[TracyMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#tracymiddleware) (with priority 100)
+and [AutoBasePathMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#autobasepathmiddleware) (with priority 200)
+are registered by default, but you could disable them if you want.
 
-```
+```yaml
 api:
     plugins: 
         Apitte\Middlewares\DI\MiddlewaresPlugin:
@@ -38,34 +36,38 @@ api:
             autobasepath: true
 ```
 
-- `tracy` - Automatically register `Contributte\Middlewares\TracyMiddleware` with priority 100.
-- `autobasepath` - Automatically register `Contributte\Middlewares\AutoBasePathMiddleware` with priority 200.
-
-By default, the `Apitte\Middlewares\ApiMiddleware` is registered with priority 500. So you can add as many middlewares as you want.
+`Apitte\Middlewares\ApiMiddleware` which run whole Apitte application is registered with priority 500. Make sure there is no middleware with higher priority.
 
 ## Middlewares
 
-This package is based on [contributte/middlewares](https://github.com/contributte/middlewares). You should register also middleware extension in your config file.
+If you want to add another middleware, just register a class with appropriate tags.
 
 ```yaml
-extensions:      
-    middlewares: Contributte\Middlewares\DI\MiddlewaresExtension
-    api: Apitte\Core\DI\ApiExtension
-```
-
-After that you feel the power of the middlewares.
-
-If you wanna add a another middleware, just register a class with appropriate tags.
-
-```
 services:
-  m1: 
-    factory: App\Model\AppMiddleware1
-    tags: [middleware: [priority: <int>]]
+    m1: 
+        factory: App\Api\Middleware\ExampleMiddleware
+        tags: [middleware: [priority: 10]]
 ```
 
-## Playground
+```php
+namespace App\Api\Middleware;
 
-I've made a repository with full applications for education.
+use Contributte\Middlewares\IMiddleware;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-Take a look: https://github.com/apitte/playground
+class ExampleMiddleware implements IMiddleware
+{
+
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
+    {
+    	// Call next middleware in a row
+        $response = $next($request, $response);
+        // Return response
+        return $response;
+    }
+
+}
+```
+
+See [contributte/middlewares](https://github.com/contributte/middlewares) documentation for more info and useful middlewares

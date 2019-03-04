@@ -1,8 +1,6 @@
-# Apitte\Middlewares
+# Apitte Middlewares
 
-:wrench: Middlewares\PSR-7 for Apitte.
-
------
+Middlewares for [Apitte](https://github.com/apitte/core).
 
 [![Build Status](https://img.shields.io/travis/apitte/middlewares.svg?style=flat-square)](https://travis-ci.org/apitte/middlewares)
 [![Code coverage](https://img.shields.io/coveralls/apitte/middlewares.svg?style=flat-square)](https://coveralls.io/r/apitte/middlewares)
@@ -16,12 +14,6 @@
 
 [![Join the chat](https://img.shields.io/gitter/room/apitte/apitte.svg?style=flat-square)](http://bit.ly/apittegitter)
 
-## Install
-
-```
-composer require apitte/middlewares
-```
-
 ## Version
 
 | State       | Version      | Branch   | PHP      | Composer                                        |
@@ -30,12 +22,11 @@ composer require apitte/middlewares
 | stable      | `^0.4.0`     | `master` | `>= 7.1` |                                                 |
 | stable      | `^0.3.0`     | `master` | `>= 5.6` |                                                 |
 
-## Overview
+## Documentation
 
-- [Installation - how to register a plugin](https://github.com/apitte/middlewares/tree/master/.docs#plugin)
-- [Configuration - how to configure](https://github.com/apitte/middlewares/tree/master/.docs#configuration)
-- [Middlewares - cycle](https://github.com/apitte/middlewares/tree/master/.docs#middlewares)
-- [Playground - real examples](https://github.com/apitte/middlewares/tree/master/.docs#playground)
+- [Setup](.docs/README.md#setup)
+- [Configuration](.docs/README.md#configuration)
+- [Middlewares](.docs/README.md#middlewares)
 
 ## Maintainers
 
@@ -60,12 +51,8 @@ composer require apitte/middlewares
   </tbody>
 </table>
 
------
+## Sponsoring
 
 <a href="https://github.com/tlapnet"><img  width="200" src="https://cdn.rawgit.com/f3l1x/xsource/2463efb7/assets/tlapdev.png"></a>
 
-The development is sponsored by [Tlapnet](http://www.tlapnet.cz) and a lot of coffees. Thank you guys! :+1:
-
------
-
-Thank you for testing, reporting and contributing.
+The development is sponsored by [Tlapnet](https://www.tlapnet.cz)
