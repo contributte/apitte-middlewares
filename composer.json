@@ -14,12 +14,16 @@
     {
       "name": "Milan Felix Šulc",
       "homepage": "https://f3l1x.io"
+    },
+    {
+      "name": "Marek Bartoš",
+      "homepage": "https://bartos.dev"
     }
   ],
   "require": {
     "php": "^7.2",
-    "apitte/core": "^0.6.0",
-    "contributte/middlewares": "^0.9.0"
+    "apitte/core": "^0.7.0",
+    "psr/http-server-middleware": "^1.0"
   },
   "require-dev": {
     "mockery/mockery": "^0.9.9",
@@ -29,7 +33,13 @@
     "phpstan/phpstan-deprecation-rules": "^0.11",
     "phpstan/phpstan-nette": "^0.11",
     "phpstan/phpstan-shim": "^0.11",
-    "phpstan/phpstan-strict-rules": "^0.11"
+    "phpstan/phpstan-strict-rules": "^0.11",
+    "psr/log": "^1.1",
+    "tracy/tracy": "~2.6.0"
+  },
+  "provide": {
+    "psr/http-server-handler-implementation": "1.0",
+    "psr/http-server-middleware-implementation": "1.0"
   },
   "autoload": {
     "psr-4": {

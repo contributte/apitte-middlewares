@@ -1,0 +1,4 @@
+parameters:
+	ignoreErrors:
+		# Future-proof
+		- '#^Return type \(string\|null\) of method .+Panel\:\:get(Tab|Panel)\(\) should be covariant with return type \(string\) of method Tracy\\IBarPanel\:\:get(Tab|Panel)\(\)$#'

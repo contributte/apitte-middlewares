@@ -1,6 +1,6 @@
 # Apitte Middlewares
 
-Middlewares for [Apitte](https://github.com/apitte/core).
+[PSR-15](https://www.php-fig.org/psr/psr-15/) middlewares for [Apitte](https://github.com/apitte/core).
 
 [![Build Status](https://img.shields.io/travis/apitte/middlewares.svg?style=flat-square)](https://travis-ci.org/apitte/middlewares)
 [![Code coverage](https://img.shields.io/coveralls/apitte/middlewares.svg?style=flat-square)](https://coveralls.io/r/apitte/middlewares)
@@ -18,7 +18,8 @@ Middlewares for [Apitte](https://github.com/apitte/core).
 
 - [Setup](.docs/README.md#setup)
 - [Configuration](.docs/README.md#configuration)
-- [Middlewares](.docs/README.md#middlewares)
+- [Register middlewares](.docs/README.md#register-middlewares)
+- [Own middlewares](.docs/README.md#own-middlewares)
 
 ## Version
 

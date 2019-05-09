@@ -1,6 +1,6 @@
 # Apitte Middlewares
 
-Middlewares for [Apitte](https://github.com/apitte/core).
+[PSR-15](https://www.php-fig.org/psr/psr-15/) middlewares for [Apitte](https://github.com/apitte/core).
 
 Transform and validate request or early return response before it is handled by dispatcher.
 
@@ -12,7 +12,7 @@ Transform and validate request or early return response before it is handled by 
 
 ## Setup
 
-First of all, setup [core](https://github.com/apitte/core) and [contributte/middlewares](https://github.com/contributte/middlewares) packages.
+First of all, setup [core](https://github.com/apitte/core).
 
 Install and register middlewares plugin
 
@@ -26,25 +26,19 @@ api:
         Apitte\Middlewares\DI\MiddlewaresPlugin:
 ```
 
-In `index.php` replace `Apitte\Core\Application\IApplication` with `Contributte\Middlewares\Application\IApplication`.
-
 ## Configuration
 
-[TracyMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#tracymiddleware) (with priority 100)
-and [AutoBasePathMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#autobasepathmiddleware) (with priority 200)
-are registered by default, but you could disable them if you want.
+TODO - EnforceHttpsMiddleware, BasicAuthMiddleware, RequestLoggingMiddleware
 
 ```yaml
 api:
     plugins: 
         Apitte\Middlewares\DI\MiddlewaresPlugin:
-            tracy: true
-            autobasepath: true
+            autoBasePath: true
+            methodOverride: true
 ```
 
-`Apitte\Middlewares\ApiMiddleware` which run whole Apitte application is registered with priority 500. Make sure there is no middleware with higher priority.
-
-## Middlewares
+## Register middlewares
 
 If you want to add another middleware, just register a class with appropriate tags.
 
@@ -52,28 +46,27 @@ If you want to add another middleware, just register a class with appropriate ta
 services:
     m1: 
         factory: App\Api\Middleware\ExampleMiddleware
-        tags: [middleware: [priority: 10]]
+        tags: [apitte.middleware: [priority: 10]]
 ```
+
+## Own middlewares
 
 ```php
 namespace App\Api\Middleware;
 
-use Contributte\Middlewares\IMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class ExampleMiddleware implements IMiddleware
+class ExampleMiddleware implements MiddlewareInterface
 {
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
-    {
-    	// Call next middleware in a row
-        $response = $next($request, $response);
-        // Return response
-        return $response;
+    public function process(ServerRequestInterface $request,RequestHandlerInterface $handler) : ResponseInterface {
+    	// Do something
+    	// Return new response or call next middleware in a row
+    	return $handler->handle($request);
     }
 
 }
 ```
-
-See [contributte/middlewares](https://github.com/contributte/middlewares) documentation for more info and useful middlewares
