@@ -17,13 +17,12 @@
     }
   ],
   "require": {
-    "php": ">= 7.1",
+    "php": "^7.2",
     "apitte/core": "^0.6.0",
-    "contributte/middlewares": "^0.6.0|^0.7.0|^0.8.0"
+    "contributte/middlewares": "^0.9.0"
   },
   "require-dev": {
     "mockery/mockery": "^0.9.9",
-    "nette/di": "~2.4.15",
     "ninjify/nunjuck": "^0.2.0",
     "ninjify/qa": "^0.8.0",
     "phpstan/extension-installer": "^1.0",
@@ -31,9 +30,6 @@
     "phpstan/phpstan-nette": "^0.11",
     "phpstan/phpstan-shim": "^0.11",
     "phpstan/phpstan-strict-rules": "^0.11"
-  },
-  "conflict": {
-    "nette/di": "<2.4.15"
   },
   "autoload": {
     "psr-4": {
@@ -47,7 +43,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.6.x-dev"
+      "dev-master": "0.7.x-dev"
     }
   }
 }
