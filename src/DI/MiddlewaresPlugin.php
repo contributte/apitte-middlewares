@@ -2,28 +2,32 @@
 
 namespace Apitte\Middlewares\DI;
 
-use Apitte\Core\DI\Plugin\AbstractPlugin;
-use Apitte\Core\DI\Plugin\PluginCompiler;
+use Apitte\Core\DI\Plugin\Plugin;
 use Apitte\Middlewares\ApiMiddleware;
 use Contributte\Middlewares\AutoBasePathMiddleware;
 use Contributte\Middlewares\DI\MiddlewaresExtension;
 use Contributte\Middlewares\TracyMiddleware;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
+use stdClass;
 
-class MiddlewaresPlugin extends AbstractPlugin
+/**
+ * @property-read stdClass $config
+ */
+class MiddlewaresPlugin extends Plugin
 {
 
-	public const PLUGIN_NAME = 'middlewares';
-
-	/** @var mixed[] */
-	protected $defaults = [
-		'tracy' => true,
-		'autobasepath' => true,
-	];
-
-	public function __construct(PluginCompiler $compiler)
+	public static function getName(): string
 	{
-		parent::__construct($compiler);
-		$this->name = self::PLUGIN_NAME;
+		return 'middlewares';
+	}
+
+	protected function getConfigSchema(): Schema
+	{
+		return Expect::structure([
+			'tracy' => Expect::bool(true),
+			'autobasepath' => Expect::bool(true),
+		]);
 	}
 
 	/**
@@ -32,16 +36,16 @@ class MiddlewaresPlugin extends AbstractPlugin
 	public function loadPluginConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
-		$global = $this->compiler->getExtension()->getConfig();
-		$config = $this->getConfig();
+		$globalConfig = $this->compiler->getExtension()->getConfig();
+		$config = $this->config;
 
-		if ($config['tracy'] === true) {
+		if ($config->tracy) {
 			$builder->addDefinition($this->prefix('tracy'))
-				->setFactory(TracyMiddleware::class . '::factory', [$global['debug']])
+				->setFactory(TracyMiddleware::class . '::factory', [$globalConfig->debug])
 				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 100]);
 		}
 
-		if ($config['autobasepath'] === true) {
+		if ($config->autobasepath) {
 			$builder->addDefinition($this->prefix('autobasepath'))
 				->setFactory(AutoBasePathMiddleware::class)
 				->addTag(MiddlewaresExtension::MIDDLEWARE_TAG, ['priority' => 200]);
