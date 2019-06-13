@@ -4,6 +4,12 @@ Middlewares for [Apitte](https://github.com/apitte/core).
 
 Transform and validate request or early return response before it is handled by dispatcher.
 
+## Content
+
+- [Setup](#setup)
+- [Configuration](#configuration)
+- [Middlewares](#middlewares)
+
 ## Setup
 
 First of all, setup [core](https://github.com/apitte/core) and [contributte/middlewares](https://github.com/contributte/middlewares) packages.
