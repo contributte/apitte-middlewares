@@ -14,6 +14,12 @@ Middlewares for [Apitte](https://github.com/apitte/core).
 
 [![Join the chat](https://img.shields.io/gitter/room/apitte/apitte.svg?style=flat-square)](http://bit.ly/apittegitter)
 
+## Documentation
+
+- [Setup](.docs/README.md#setup)
+- [Configuration](.docs/README.md#configuration)
+- [Middlewares](.docs/README.md#middlewares)
+
 ## Version
 
 | State       | Version      | Branch   | PHP      | Composer                                        |
@@ -21,12 +27,6 @@ Middlewares for [Apitte](https://github.com/apitte/core).
 | development | `^0.6.0`     | `master` | `>= 7.1` | `minimum-stability: dev`, `prefer-stable: true` |
 | stable      | `^0.5.0`     | `master` | `>= 7.1` |                                                 |
 | stable      | `^0.3.0`     | `master` | `>= 5.6` |                                                 |
-
-## Documentation
-
-- [Setup](.docs/README.md#setup)
-- [Configuration](.docs/README.md#configuration)
-- [Middlewares](.docs/README.md#middlewares)
 
 ## Maintainers
 
