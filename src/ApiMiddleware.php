@@ -3,11 +3,13 @@
 namespace Apitte\Middlewares;
 
 use Apitte\Core\Dispatcher\IDispatcher;
+use Apitte\Core\ErrorHandler\IErrorHandler;
 use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
 use Contributte\Middlewares\IMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Throwable;
 
 class ApiMiddleware implements IMiddleware
 {
@@ -15,9 +17,13 @@ class ApiMiddleware implements IMiddleware
 	/** @var IDispatcher */
 	protected $dispatcher;
 
-	public function __construct(IDispatcher $dispatcher)
+	/** @var IErrorHandler */
+	protected $errorHandler;
+
+	public function __construct(IDispatcher $dispatcher, IErrorHandler $errorHandler)
 	{
 		$this->dispatcher = $dispatcher;
+		$this->errorHandler = $errorHandler;
 	}
 
 	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
@@ -31,7 +37,11 @@ class ApiMiddleware implements IMiddleware
 		}
 
 		// Pass this API request/response objects to API dispatcher
-		$response = $this->dispatcher->dispatch($request, $response);
+		try {
+			$response = $this->dispatcher->dispatch($request, $response);
+		} catch (Throwable $exception) {
+			$response = $this->errorHandler->handle($exception);
+		}
 
 		// Pass response to next middleware
 		$response = $next($request, $response);
