@@ -2,6 +2,7 @@
 
 namespace Apitte\Middlewares;
 
+use Apitte\Core\Dispatcher\DispatchError;
 use Apitte\Core\Dispatcher\IDispatcher;
 use Apitte\Core\ErrorHandler\IErrorHandler;
 use Apitte\Core\Http\ApiRequest;
@@ -40,7 +41,7 @@ class ApiMiddleware implements IMiddleware
 		try {
 			$response = $this->dispatcher->dispatch($request, $response);
 		} catch (Throwable $exception) {
-			$response = $this->errorHandler->handle($exception);
+			$response = $this->errorHandler->handle(new DispatchError($exception, $request));
 		}
 
 		// Pass response to next middleware
