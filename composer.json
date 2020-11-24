@@ -22,7 +22,7 @@
     "contributte/middlewares": "^0.10.0"
   },
   "require-dev": {
-    "mockery/mockery": "^0.9.9",
+    "mockery/mockery": "^1.3.3",
     "ninjify/nunjuck": "^0.4.0",
     "ninjify/qa": "^0.8.0",
     "phpstan/extension-installer": "^1.0",
