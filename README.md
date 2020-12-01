@@ -1,30 +1,59 @@
-# Apitte Middlewares
+![Apitte Middlewares](https://heatbadger.now.sh/github/readme/apitte/middlewares/)
 
-Middlewares for [Apitte](https://github.com/apitte/core).
+<p align=center>
+  <a href="https://github.com/apitte/middlewares/actions">
+    <img src="https://badgen.net/github/checks/apitte/middlewares/master?cache=300">
+  </a>
+  <a href="https://coveralls.io/r/apitte/middlewares">
+    <img src="https://badgen.net/coveralls/c/github/apitte/middlewares?cache=300">
+  </a>
+  <a href="https://packagist.org/packages/apitte/middlewares">
+    <img src="https://badgen.net/packagist/dm/apitte/middlewares">
+  </a>
+  <a href="https://packagist.org/packages/apitte/middlewares">
+    <img src="https://badgen.net/packagist/v/apitte/middlewares">
+  </a>
+</p>
+<p align=center>
+  <a href="https://packagist.org/packages/apitte/middlewares">
+    <img src="https://badgen.net/packagist/php/apitte/middlewares">
+  </a>
+  <a href="https://github.com/apitte/middlewares">
+    <img src="https://badgen.net/github/license/apitte/middlewares">
+  </a>
+  <a href="http://bit.ly/apittegitter">
+    <img src="https://badgen.net/badge/chat/apitte/cyan">
+  </a>
+  <a href="https://bit.ly/cttfo">
+    <img src="https://badgen.net/badge/support/forum/yellow">
+  </a>
+  <a href="https://contributte.org/partners.html">
+    <img src="https://badgen.net/badge/become/a%20patron/F96854">
+  </a>
+<p>
 
-[![Build Status](https://img.shields.io/travis/apitte/middlewares.svg?style=flat-square)](https://travis-ci.org/apitte/middlewares)
-[![Code coverage](https://img.shields.io/coveralls/apitte/middlewares.svg?style=flat-square)](https://coveralls.io/r/apitte/middlewares)
-[![Licence](https://img.shields.io/packagist/l/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
-[![Downloads this Month](https://img.shields.io/packagist/dm/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
-[![Downloads total](https://img.shields.io/packagist/dt/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
-[![Latest stable](https://img.shields.io/packagist/v/apitte/middlewares.svg?style=flat-square)](https://packagist.org/packages/apitte/middlewares)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+<p align=center>
+Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
+</p>
 
-## Discussion / Help
+## Usage
 
-[![Join the chat](https://img.shields.io/gitter/room/apitte/apitte.svg?style=flat-square)](http://bit.ly/apittegitter)
+To install the latest version of `apitte/middlewares` use [Composer](https://getcomposer.com).
+
+```
+composer require apitte/middlewares
+```
 
 ## Documentation
 
-- [Setup](.docs/README.md#setup)
-- [Configuration](.docs/README.md#configuration)
-- [Middlewares](.docs/README.md#middlewares)
+For details on how to use this package, check out our [documentation](.docs).
 
 ## Version
 
 | State       | Version | Branch   | Nette | PHP     |
 |-------------|---------|----------|-------|---------|
-| dev         | `^0.7`  | `master` | 3.0+  | `>=7.2`  |
+| dev         | `^0.8`  | `master` | 3.0+  | `>=7.2` |
+| stable      | `^0.7`  | `master` | 3.0+  | `>=7.2` |
 | stable      | `^0.6`  | `master` | 3.0+  | `^7.2`  |
 | stable      | `^0.5`  | `master` | 2.4   | `>=7.1` |
 | stable      | `^0.3`  | `master` | 2.4   | `>=5.6` |
