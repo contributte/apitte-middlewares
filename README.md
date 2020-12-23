@@ -76,6 +76,11 @@ For details on how to use this package, check out our [documentation](.docs).
 
 ## Sponsoring
 
-<a href="https://github.com/tlapnet"><img  width="200" src="https://avatars.githubusercontent.com/tlapnet"></a>
+<a href="https://github.com/tlapnet">
+  <img width="80" height="80" src="https://avatars1.githubusercontent.com/u/22914186?s=80&v=4">
+</a>
 
-The development is sponsored by [Tlapnet](https://www.tlapnet.cz)
+-----
+
+Consider to [support](https://contributte.com/partners) **contributte** development team.
+Also thank you for using this package.
