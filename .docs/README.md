@@ -20,9 +20,9 @@ Install and register middlewares plugin
 composer require apitte/middlewares
 ```
 
-```yaml
+```neon
 api:
-    plugins: 
+    plugins:
         Apitte\Middlewares\DI\MiddlewaresPlugin:
 ```
 
@@ -34,9 +34,9 @@ In `index.php` replace `Apitte\Core\Application\IApplication` with `Contributte\
 and [AutoBasePathMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#autobasepathmiddleware) (with priority 200)
 are registered by default, but you could disable them if you want.
 
-```yaml
+```neon
 api:
-    plugins: 
+    plugins:
         Apitte\Middlewares\DI\MiddlewaresPlugin:
             tracy: true
             autobasepath: true
@@ -48,9 +48,9 @@ api:
 
 If you want to add another middleware, just register a class with appropriate tags.
 
-```yaml
+```neon
 services:
-    m1: 
+    m1:
         factory: App\Api\Middleware\ExampleMiddleware
         tags: [middleware: [priority: 10]]
 ```
