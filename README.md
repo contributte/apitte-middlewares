@@ -1,21 +1,21 @@
 ![](https://heatbadger.now.sh/github/readme/apitte/middlewares/)
 
 <p align=center>
-  <a href="https://github.com/apitte/middlewares/actions"><img src="https://badgen.net/github/checks/apitte/middlewares/master?cache=300"></a>
-  <a href="https://coveralls.io/r/apitte/middlewares"> <img src="https://badgen.net/coveralls/c/github/apitte/middlewares?cache=300"> </a>
-  <a href="https://packagist.org/packages/apitte/middlewares"> <img src="https://badgen.net/packagist/dm/apitte/middlewares"> </a>
-  <a href="https://packagist.org/packages/apitte/middlewares"> <img src="https://badgen.net/packagist/v/apitte/middlewares"> </a>
+    <a href="https://github.com/apitte/middlewares/actions"><img src="https://badgen.net/github/checks/apitte/middlewares"></a>
+    <a href="https://coveralls.io/r/apitte/middlewares"><img src="https://badgen.net/coveralls/c/github/apitte/middlewares"></a>
+    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/dm/apitte/middlewares"></a>
+    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/v/apitte/middlewares"></a>
 </p>
 <p align=center>
-  <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/php/apitte/middlewares"></a>
-  <a href="https://github.com/apitte/middlewares"><img src="https://badgen.net/github/license/apitte/middlewares"></a>
-  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
-  <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
-  <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/become/a%20patron/F96854"></a>
-<p>
+    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/php/apitte/middlewares"></a>
+    <a href="https://github.com/apitte/middlewares"><img src="https://badgen.net/github/license/apitte/middlewares"></a>
+    <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
+    <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
+    <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
+</p>
 
 <p align=center>
-Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
+    Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
 </p>
 
 ## Usage
@@ -30,7 +30,7 @@ composer require apitte/middlewares
 
 For details on how to use this package, check out our [documentation](.docs).
 
-## Version
+## Versions
 
 | State       | Version | Branch   | Nette | PHP     |
 |-------------|---------|----------|-------|---------|
@@ -40,21 +40,15 @@ For details on how to use this package, check out our [documentation](.docs).
 | stable      | `^0.5`  | `master` | 2.4   | `>=7.1` |
 | stable      | `^0.3`  | `master` | 2.4   | `>=5.6` |
 
-## Maintainers
+## Development
 
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <a href="https://github.com/f3l1x">
-            <img width="150" height="150" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=150">
-        </a>
-        </br>
-        <a href="https://github.com/f3l1x">Milan Felix Šulc</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+See [how to contribute](https://contributte.org/contributing.html) to this package.
+
+This package is currently maintaining by these authors.
+
+<a href="https://github.com/f3l1x">
+  <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
+</a>
 
 ## Sponsoring
 
