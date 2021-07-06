@@ -17,8 +17,8 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
-    "apitte/core": "~0.7",
+    "php": ">=7.3",
+    "apitte/core": "~0.7 || ~0.8",
     "contributte/middlewares": "^0.10.0"
   },
   "require-dev": {
