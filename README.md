@@ -20,7 +20,7 @@
 
 ## Usage
 
-To install the latest version of `apitte/middlewares` use [Composer](https://getcomposer.com).
+To install the latest version of `apitte/middlewares` use [Composer](https://getcomposer.org).
 
 ```bash
 composer require apitte/middlewares
