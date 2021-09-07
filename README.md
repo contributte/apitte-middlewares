@@ -1,4 +1,4 @@
-![](https://heatbadger.now.sh/github/readme/apitte/middlewares/)
+![](https://heatbadger.now.sh/github/readme/contributte/apitte-middlewares/)
 
 <p align=center>
     <a href="https://github.com/apitte/middlewares/actions"><img src="https://badgen.net/github/checks/apitte/middlewares"></a>
@@ -8,7 +8,7 @@
 </p>
 <p align=center>
     <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/php/apitte/middlewares"></a>
-    <a href="https://github.com/apitte/middlewares"><img src="https://badgen.net/github/license/apitte/middlewares"></a>
+    <a href="https://github.com/contributte/apitte-middlewares"><img src="https://badgen.net/github/license/contributte/apitte-middlewares"></a>
     <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
     <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
     <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
