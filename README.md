@@ -1,14 +1,6 @@
-![](https://heatbadger.now.sh/github/readme/contributte/apitte-middlewares/)
+![](https://heatbadger.now.sh/github/readme/contributte/apitte-middlewares/?deprecated=1)
 
 <p align=center>
-    <a href="https://github.com/apitte/middlewares/actions"><img src="https://badgen.net/github/checks/apitte/middlewares"></a>
-    <a href="https://coveralls.io/r/apitte/middlewares"><img src="https://badgen.net/coveralls/c/github/apitte/middlewares"></a>
-    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/dm/apitte/middlewares"></a>
-    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/v/apitte/middlewares"></a>
-</p>
-<p align=center>
-    <a href="https://packagist.org/packages/apitte/middlewares"><img src="https://badgen.net/packagist/php/apitte/middlewares"></a>
-    <a href="https://github.com/contributte/apitte-middlewares"><img src="https://badgen.net/github/license/contributte/apitte-middlewares"></a>
     <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
     <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
     <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
@@ -17,6 +9,17 @@
 <p align=center>
     Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
 </p>
+
+## Disclaimer
+
+| :warning: | This project is no longer being maintained. Please use [contributte/apitte](https://github.com/contributte/apitte).|
+|---|---|
+
+| Composer | [`apitte/middlewares`](https://packagist.org/apitte/middlewares) |
+|---| --- |
+| Version | ![](https://badgen.net/packagist/v/apitte/middlewares) |
+| PHP | ![](https://badgen.net/packagist/php/apitte/middlewares) |
+| License | ![](https://badgen.net/github/license/contributte/apitte-middlewares) |
 
 ## Usage
 
@@ -28,7 +31,77 @@ composer require apitte/middlewares
 
 ## Documentation
 
-For details on how to use this package, check out our [documentation](.docs).
+Middlewares for [Apitte](https://github.com/apitte/core).
+
+Transform and validate request or early return response before it is handled by dispatcher.
+
+### Setup
+
+First of all, setup [core](https://github.com/apitte/core) and [contributte/middlewares](https://github.com/contributte/middlewares) packages.
+
+Install and register middlewares plugin
+
+```bash
+composer require apitte/middlewares
+```
+
+```neon
+api:
+    plugins:
+        Apitte\Middlewares\DI\MiddlewaresPlugin:
+```
+
+In `index.php` replace `Apitte\Core\Application\IApplication` with `Contributte\Middlewares\Application\IApplication`.
+
+### Configuration
+
+[TracyMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#tracymiddleware) (with priority 100)
+and [AutoBasePathMiddleware](https://github.com/contributte/middlewares/blob/master/.docs/README.md#autobasepathmiddleware) (with priority 200)
+are registered by default, but you could disable them if you want.
+
+```neon
+api:
+    plugins:
+        Apitte\Middlewares\DI\MiddlewaresPlugin:
+            tracy: true
+            autobasepath: true
+```
+
+`Apitte\Middlewares\ApiMiddleware` which run whole Apitte application is registered with priority 500. Make sure there is no middleware with higher priority.
+
+### Middlewares
+
+If you want to add another middleware, just register a class with appropriate tags.
+
+```neon
+services:
+    m1:
+        factory: App\Api\Middleware\ExampleMiddleware
+        tags: [middleware: [priority: 10]]
+```
+
+```php
+namespace App\Api\Middleware;
+
+use Contributte\Middlewares\IMiddleware;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+class ExampleMiddleware implements IMiddleware
+{
+
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
+    {
+    	// Call next middleware in a row
+        $response = $next($request, $response);
+        // Return response
+        return $response;
+    }
+
+}
+```
+
+See [contributte/middlewares](https://github.com/contributte/middlewares) documentation for more info and useful middlewares
 
 ## Versions
 
@@ -39,9 +112,7 @@ For details on how to use this package, check out our [documentation](.docs).
 
 ## Development
 
-See [how to contribute](https://contributte.org/contributing.html) to this package.
-
-This package is currently maintaining by these authors.
+This package was maintained by these authors.
 
 <a href="https://github.com/f3l1x">
   <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
