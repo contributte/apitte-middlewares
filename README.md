@@ -15,7 +15,7 @@
 | :warning: | This project is no longer being maintained. Please use [contributte/apitte](https://github.com/contributte/apitte).|
 |---|---|
 
-| Composer | [`apitte/middlewares`](https://packagist.org/apitte/middlewares) |
+| Composer | [`apitte/middlewares`](https://packagist.org/packages/apitte/middlewares) |
 |---| --- |
 | Version | ![](https://badgen.net/packagist/v/apitte/middlewares) |
 | PHP | ![](https://badgen.net/packagist/php/apitte/middlewares) |
